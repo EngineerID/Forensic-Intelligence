@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Audit Framework | Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #05070a; --accent: #2ec4b6; --panel: #0d1117; 
+            --text: #e6edf3; --text-dim: #8b949e; --border: #30363d;
+        }
+        body {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background-color: var(--bg); color: var(--text);
+            margin: 0; display: flex; flex-direction: column; min-height: 100vh;
+        }
+        .header {
+            padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border);
+            background: radial-gradient(circle at center, #112 0%, #05070a 100%);
+        }
+        .header h1 { letter-spacing: -1px; font-size: 1.8rem; margin: 0; color: var(--accent); }
+        .header p { color: var(--text-dim); font-size: 0.9rem; margin-top: 10px; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; flex-grow: 1; }
+
+        /* Module Navigation */
+        .module-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .module-card {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 24px; border-radius: 8px; position: relative;
+            transition: all 0.3s ease; text-decoration: none; color: inherit;
+            display: flex; flex-direction: column;
+        }
+        .module-card:hover { border-color: var(--accent); transform: translateY(-2px); background: #161b22; }
+        .module-card h2 { font-size: 1.1rem; margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+        .module-card h2 i { color: var(--accent); font-size: 0.9rem; }
+        .module-card p { font-size: 0.85rem; color: var(--text-dim); margin: 0; line-height: 1.5; flex-grow: 1; }
+        .file-path {
+            display: block; font-size: 0.7rem; color: var(--accent);
+            margin-top: 15px; opacity: 0.7; font-weight: bold;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: var(--panel); border-top: 1px solid var(--border);
+            padding: 10px 20px; font-size: 0.75rem; color: var(--text-dim);
+            display: flex; justify-content: space-between;
+        }
+        .status-item { display: flex; align-items: center; gap: 8px; }
+        .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+        
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        @media (min-width: 600px) { .module-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>SOVEREIGN_AUDIT_FRAMEWORK_v1.0</h1>
+    <p>Intelligence Engine for Institutional Recovery & Asset Optimization</p>
+</header>
+
+<main class="container">
+    <div class="module-grid">
+        
+        <a href="Finance/salm_valuations.py" class="module-card">
+            <h2><i class="fas fa-calculator"></i> SALM Valuation Engine</h2>
+            <p>Monte Carlo simulations and NPV calculators for territorial assets (5,600 km²) and Sovereign ROI modeling.</p>
+            <span class="file-path">/Finance/salm_valuations.py</span>
+        </a>
+
+        <a href="Finance/energy_opex_model.py" class="module-card">
+            <h2><i class="fas fa-bolt"></i> Energy OpEx Optimizer</h2>
+            <p>Predictive analytics for energy cost reduction in distributed industrial mining and physical infrastructure.</p>
+            <span class="file-path">/Finance/energy_opex_model.py</span>
+        </a>
+
+        <a href="Governance/bottleneck_graph.cypher" class="module-card">
+            <h2><i class="fas fa-project-diagram"></i> Institutional Twin (Graph)</h2>
+            <p>Cypher queries mapping administrative dependencies for SOEs (PetroVietnam model) to identify structural lag.</p>
+            <span class="file-path">/Governance/bottleneck_graph.cypher</span>
+        </a>
+
+        <a href="Governance/parallel_processor.py" class="module-card">
+            <h2><i class="fas fa-microchip"></i> Parallel Path Processor</h2>
+            <p>Python agent logic for identifying and automating parallel approval paths to achieve 15%+ efficiency gains.</p>
+            <span class="file-path">/Governance/parallel_processor.py</span>
+        </a>
+
+        <a href="Regulation/audit_trail.sql" class="module-card">
+            <h2><i class="fas fa-database"></i> Fiduciary Audit Pipeline</h2>
+            <p>Hardened PostgreSQL schemas for SEC-compliant disclosures and GIPS performance verification.</p>
+            <span class="file-path">/Regulation/audit_trail.sql</span>
+        </a>
+
+        <a href="Regulation/dashboard.html" class="module-card">
+            <h2><i class="fas fa-chart-line"></i> Intelligence Dashboard</h2>
+            <p>Real-time visual interface for SALM outcomes, bottleneck alerts, and fiduciary integrity logs.</p>
+            <span class="file-path">/Regulation/dashboard.html</span>
+        </a>
+
+        <a href="Files/structural_defense.md" class="module-card" style="grid-column: span 1;">
+            <h2><i class="fas fa-file-shield"></i> WIPO Structural Defense</h2>
+            <p>Legal-technical enforcement logic for Patent WO2022240365 and IP "Kill-Switch" protocols.</p>
+            <span class="file-path">/Files/structural_defense.md</span>
+        </a>
+
+        <a href="README.md" class="module-card">
+            <h2><i class="fas fa-book"></i> Documentation Index</h2>
+            <p>Methodology overview bridging Civil Engineering foundations with Computer Science distributed systems.</p>
+            <span class="file-path">/README.md</span>
+        </a>
+
+    </div>
+</main>
+
+<div class="status-bar">
+    <div class="status-item">
+        <span class="dot"></span> SYSTEM_ONLINE // AUDIT_ACTIVE
+    </div>
+    <div class="status-item">
+        <i class="fas fa-key" style="color: var(--accent); margin-right: 5px;"></i> 
+        MIT_LICENSE_ACTIVE // WIPO_PROTECTED
+    </div>
+    <div class="status-item">
+        CFA_GIPS // WIPO_PCT // ISO_27001
+    </div>
+</div>
+
+</body>
+</html>
