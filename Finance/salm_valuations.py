@@ -35,7 +35,7 @@ class SovereignAssetValuator:
     def calculate_adjusted_npv(self, cash_flows, discount_rate, governance_penalty):
         """
         Calculates NPV while applying a 'Governance Penalty' for 
-        administrative lags identified in the Digital Twin (PVN Model).
+        administrative lags identified in the Digital Twin.
         """
         adjusted_rate = discount_rate + governance_penalty
         npv = sum(cf / (1 + adjusted_rate)**i for i, cf in enumerate(cash_flows))

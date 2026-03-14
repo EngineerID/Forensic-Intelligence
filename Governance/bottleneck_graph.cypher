@@ -13,7 +13,7 @@ CREATE (d4)-[:REQUIRES_APPROVAL {avg_lag_days: 3}]->(d3)
 CREATE (d3)-[:FINALIZES]->(p)
 
 // 3. Identification Query: Find the Critical Path Bottleneck
-// Based on the PVN "Heat Map" approach to identify structural lags
+// Based on the a "Heat Map" approach to identify structural lags
 MATCH (a:Department)-[r:REQUIRES_APPROVAL]->(b:Department)
 WHERE r.avg_lag_days > 7
 RETURN a.name AS From, b.name AS To, r.avg_lag_days AS Delay
