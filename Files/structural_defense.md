@@ -14,8 +14,8 @@ This repository implements a technical enforcement layer for fiduciary duty. Unl
 * [cite_start]**Clean Truth:** All operational data from 5,600 km² territorial plots or industrial sites is hashed and stored in immutable logs[cite: 15, 103].
 * [cite_start]**Verification:** This ensures that "Institutional Decay" or administrative "lags" cannot be hidden in redacted reports[cite: 100, 113].
 
-## 3. Industrial Application (The PVN Model)
-[cite_start]As proposed in the **PetroVietnam (PVN)** digital twin, the defense layer maps inter-departmental dependencies[cite: 96, 97]. 
+## 3. Industrial Application
+[cite_start]As proposed in the **oil industry** digital twin, the defense layer maps inter-departmental dependencies[cite: 96, 97]. 
 * [cite_start]**Parallel Processing:** If the Knowledge Graph identifies a bottleneck exceeding a 7-day lag in the critical path, the AI Agent suggests a re-routing of capital deployment to maintain the 15%+ efficiency target[cite: 109, 114, 153].
 
 ---
