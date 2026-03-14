@@ -4,49 +4,73 @@ from scipy.stats import norm
 
 class SovereignAssetValuator:
     """
-    Sovereign Asset & Liability Management (SALM) Engine
-    Implements Risk-Adjusted NPV for large-scale territorial assets.
+    Sovereign Asset & Liability Management (SALM) Engine.
+    Now integrated with Graph-derived 'Value at Risk' (VaR) metrics.
     """
     
     def __init__(self, asset_name, initial_value, target_roi=0.24):
         self.asset_name = asset_name
         self.initial_value = initial_value
-        self.target_roi = target_roi # Based on Ambient Systems 24% ROI model
+        self.target_roi = target_roi 
+
+    def calculate_governance_penalty(self, total_lag_days, value_at_risk):
+        """
+        Translates Graph bottlenecks into a basis-point penalty.
+        Penalty = (Total Lag / 365) * (VaR / Initial Value)
+        """
+        # Normalizing the impact of administrative friction on the discount rate
+        impact_ratio = value_at_risk / self.initial_value
+        time_decay = total_lag_days / 365
+        
+        # Returns penalty in decimal form (e.g., 0.02 for 200 bps)
+        return round(impact_ratio + time_decay, 4)
 
     def monte_carlo_simulation(self, iterations=10000, institutional_risk_factor=0.15):
         """
         Simulates yield outcomes based on 'Institutional Decay' markers.
-        institutional_risk_factor: Higher values represent administrative bottlenecks.
         """
-        # Mean return set at target ROI, volatility influenced by institutional risk
         mu = self.target_roi 
         sigma = institutional_risk_factor 
         
         simulated_returns = np.random.normal(mu, sigma, iterations)
         
-        results = {
+        return {
             "mean_expected_roi": np.mean(simulated_returns),
             "value_at_risk_95": np.percentile(simulated_returns, 5),
             "confidence_interval": (np.percentile(simulated_returns, 2.5), 
                                    np.percentile(simulated_returns, 97.5))
         }
-        return results
 
-    def calculate_adjusted_npv(self, cash_flows, discount_rate, governance_penalty):
+    def calculate_sovereign_npv(self, cash_flows, discount_rate, total_lag_days, value_at_risk):
         """
-        Calculates NPV while applying a 'Governance Penalty' for 
-        administrative lags identified in the Digital Twin.
+        The 'Fiduciary Hammer': Adjusts NPV based on real-time Graph bottlenecks.
         """
-        adjusted_rate = discount_rate + governance_penalty
+        penalty = self.calculate_governance_penalty(total_lag_days, value_at_risk)
+        adjusted_rate = discount_rate + penalty
+        
         npv = sum(cf / (1 + adjusted_rate)**i for i, cf in enumerate(cash_flows))
-        return npv
+        return npv, penalty
 
-# --- MOCK EXECUTION FOR PORTFOLIO PREVIEW ---
+# --- CONNECTED EXECUTION ---
 if __name__ == "__main__":
-    # Example: 5,600 km2 Territorial Plot or Vertical Farm Portfolio
-    valuator = SovereignAssetValuator("Regional Asset Alpha", initial_value=100000000)
+    # Context: A $100M Sovereign Infrastructure Project
+    valuator = SovereignAssetValuator("Strategic Asset Alpha", initial_value=100_000_000)
     
-    print(f"--- Simulation for {valuator.asset_name} ---")
-    sim = valuator.monte_carlo_simulation(institutional_risk_factor=0.12)
-    print(f"Mean Expected ROI: {sim['mean_expected_roi']:.2%}")
-    print(f"95% Confidence Interval: [{sim['confidence_interval'][0]:.2%}, {sim['confidence_interval'][1]:.2%}]")
+    # Data derived from the Cypher 'Forensic Leakage' Query
+    graph_lag_days = 23 
+    graph_var = 340_000 # Cumulative value at risk from bottlenecks
+    
+    # Standard discount rate (e.g., WACC)
+    base_discount = 0.08 
+    projected_cash_flows = [0, 20M, 25M, 30M, 35M] # 5-year outlook
+
+    npv, penalty_bps = valuator.calculate_sovereign_npv(
+        projected_cash_flows, base_discount, graph_lag_days, graph_var
+    )
+    
+    print(f"--- Fiduciary Audit: {valuator.asset_name} ---")
+    print(f"Institutional Bottleneck Penalty: {penalty_bps * 10000:.0f} bps")
+    print(f"Risk-Adjusted Sovereign NPV: ${npv:,.2f}")
+    
+    if penalty_bps > 0.05:
+        print("ALERT: FIDUCIARY BREACH THRESHOLD MET. INITIATING STRUCTURAL DEFENSE.")
