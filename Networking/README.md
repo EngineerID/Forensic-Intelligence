@@ -38,9 +38,9 @@ Binary feedback, Additive Increase Multiplicative Decrease (AIMD), stability, fa
 - `/code/`     — TBD
 - `/readings/` — TBD
 
-### Code Samples (to be added)
-Some examples to be adapted:
-- `water_filling.py` — Max-Min allocator
-- `token_bucket.py` — rate limiter
-- `wfq_simulator.py` — simple scheduler
-- `pareto_traffic_gen.py` — bursty traffic generator
+### Live Code Demos
+- [Token Bucket Rate Limiter](Networking/token_bucket.py)  
+- [Water-Filling Allocator](Networking/water_filling.py)  
+- [Pareto Traffic Generator (Coming Soon)](Networking/pareto_traffic_gen.py)  
+- [M/M/1 Queue Model (Coming Soon)](Networking/mm1_queue.py)  
+- [Weighted Fair Queuing Simulator](Networking/wfq_simulator.py)
